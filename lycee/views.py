@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Cursus,Student
+from .models import Cursus,Student, Call_of_roll
 from django.template import loader
 from django.views.generic.edit import CreateView, UpdateView
 from .forms import StudentForm
@@ -43,6 +43,27 @@ def detail_cursus(request,cursus_id):
     'liste' : result_list,
   }
   return render(request,'lycee/detail_cursus.html',context)
+
+def indexcalllist(request):
+  #result_list = Cursus.objects.all()
+  result_list = Call_of_roll.objects.order_by('date')
+
+  context = {
+    'liste' : result_list,
+  }
+  #return HttpResponse(template.render(context,request))
+  return render(request,'lycee/call_of_roll.html',context)
+
+def cursus_call_of_roll(request, cursus_id):
+  #result_list = Cursus.objects.all()
+  result_list = Call_of_roll.objects.filter(cursus=cursus_id).order_by('-date')
+
+  context = {
+    'liste' : result_list,
+  }
+  #return HttpResponse(template.render(context,request))
+  return render(request,'lycee/call_of_roll.html',context)
+
 
 
 class StudentCreateView(CreateView):

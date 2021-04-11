@@ -83,3 +83,27 @@ class Student(models.Model):
         null=True
     )
 
+class Call_of_roll(models.Model):
+  date = models.DateField(
+    verbose_name= 'date',
+    blank = False,
+    null = False,
+    help_text = 'yyyy-mm-ddd'
+  )
+  time_start = models.TimeField(
+    blank=True, 
+    null=True,
+    help_text = 'HH:MM'
+    )
+  time_end = models.TimeField(
+    blank=True, 
+    null=True,
+    help_text = 'HH:MM'
+    )
+  cursus = models.ForeignKey(
+    Cursus,
+    on_delete = models.CASCADE,
+    null = True
+  )
+  def __str__(self):
+    return '{} | {} - {}'.format(self.date,self.time_start ,self.time_end)
