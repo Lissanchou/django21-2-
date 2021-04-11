@@ -1,0 +1,24 @@
+{% extends 'master.html' %}
+<!-- {% load static %} -->
+
+{% if liste%}
+  {% block title %}
+    Create a new student 
+    {% endblock %}
+
+    {% block content %}
+      <form method="POST">
+        {% csrf_token %}
+        <!-- cross site request forgery -->
+
+        {{form.as_p}}
+        <div class="boutons">
+          <button class='button raduis aler left' type="cancel"><a href={% url 'index'%}>Cancel</a></button>
+          <button class='button raduis succes right' type="submit">Valider</button>
+        </div>
+      </form>
+
+    {% endblock %}
+{% else %}
+  <p>No student to show </p>
+{% endif %}
