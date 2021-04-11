@@ -26,7 +26,6 @@ urlpatterns = [
     name='detail_student'),
     path('lycee/student/create',StudentCreateView.as_view(), name='create_student'),
     path('lycee/student/edit/<int:pk>',StudentUpdateView.as_view(),name='edit_student'),
-    path('lycee/<int:pk>', views.indexcalllist,name = "indexcalllist"),
-    path('lycee/call_of_roll/<int:call_of_roll_id>', views.cursus_call_of_roll,name="detailcall")
+    path('lycee/call_of_roll/<int:pk>', views.cursus_call_of_roll,name='call_of_roll')
 ]
 

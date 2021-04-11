@@ -44,24 +44,15 @@ def detail_cursus(request,cursus_id):
   }
   return render(request,'lycee/detail_cursus.html',context)
 
-def indexcalllist(request):
-  #result_list = Cursus.objects.all()
-  result_list = Call_of_roll.objects.order_by('date')
-
-  context = {
-    'liste' : result_list,
-  }
-  #return HttpResponse(template.render(context,request))
-  return render(request,'lycee/call_of_roll.html',context)
 
 def cursus_call_of_roll(request, cursus_id):
-  #result_list = Cursus.objects.all()
+  
   result_list = Call_of_roll.objects.filter(cursus=cursus_id).order_by('-date')
 
   context = {
     'liste' : result_list,
   }
-  #return HttpResponse(template.render(context,request))
+  
   return render(request,'lycee/call_of_roll.html',context)
 
 
